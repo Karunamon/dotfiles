@@ -1,0 +1,29 @@
+# Mike's GNU Screen Config
+
+#Screen should manage the terminal alternate screen so full screen apps behave properly
+altscreen on
+
+#It should not, however, switch to the altscreen on its own - this way scrollback works.
+#Modify termcap to not report "screen" - breaks more things without this.
+termcapinfo xterm*|rxvt*|kterm*|Eterm* ti@:te@
+
+#Squelch the startup messages..
+startup_message off
+
+#Useful status line, thanks Karanbar Singh
+caption string "%?%F%{= Bk}%? %C%A %D %d-%m-%Y %{= kB} %t%= %?%F%{= Bk}%:%{= wk}%? %n "
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
+#Disable problematic flow control bindings
+bind ^S
+bind ^Q
+
+#Shorten the message timeout, because my status bar doesn't need to be useless for 5 seconds
+msgwait 0.8
+
+#Inject some humour into error messages
+nethack on
+
+#Visual bell is a pain
+vbell off
