@@ -4,6 +4,8 @@ alias ls='ls --color=auto'
 alias lsr='ls -ltr'
 alias cls='clear'
 alias grep='grep --color=auto'
+alias apt-get='sudo apt-get'
+alias yum='sudo yum'
 #Squelch that annoying login banner on SSH
 alias ssh='ssh -q'
 
@@ -117,6 +119,7 @@ PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
 
-#Terminal shenanigans - we're always on a color terminal around here.
-#Yes yes, best practices says you don't force your term - best practices don't apply here.
-export TERM=xterm-256color
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
