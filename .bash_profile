@@ -2,12 +2,16 @@
 #Use color=auto to stop color excape codes from polluting redirected output
 alias ls='ls --color=auto'
 alias lsr='ls -ltr'
+alias lsf='ls -f'
 alias cls='clear'
 alias grep='grep --color=auto'
 alias apt-get='sudo apt-get'
 alias yum='sudo yum'
 #Squelch that annoying login banner on SSH
 alias ssh='ssh -q'
+#Annoying misspelling fixes
+alias grpe='grep'
+alias sl='ls'
 
 #Loop visualization shenanigans- call Process mid-loop to have a spinning cursor
 Process()
@@ -123,6 +127,21 @@ bash_prompt() {
 PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
+
+# Auto-screen invocation. see: http://taint.org/wk/RemoteLoginAutoScreen
+# if we're coming from a remote SSH connection, in an interactive session
+# then automatically put us into a screen(1) session.   Only try once
+# -- if $STARTED_SCREEN is set, don't try it again, to avoid looping
+# if screen fails for some reason.
+if [ "$PS1" != "" -a "${STARTED_SCREEN:-x}" = x -a "${SSH_TTY:-x}" != x ]
+then
+  STARTED_SCREEN=1 ; export STARTED_SCREEN
+  [ -d $HOME/lib/screen-logs ] || mkdir -p $HOME/lib/screen-logs
+  sleep 1
+  screen -RR && exit 0
+  # normally, execution of this rc script ends here...
+  echo "Screen failed! continuing with normal bash startup"
+fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
