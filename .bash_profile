@@ -40,6 +40,9 @@ Process()
   esac
 }
 
+#Compress and encrypt a file or directory
+alias etar="tar -cz $1 | gpg --cipher-algo AES256 --force-mdc -c -o $1.tgz.gpg"
+
 ##################################################
 # Fancy PWD display function (thanks ArchWiki!)
 ##################################################
