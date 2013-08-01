@@ -1,19 +1,46 @@
-## Aliases
-#Use color=auto to stop color excape codes from polluting redirected output
+#!/usr/bin/env bash
+##.bash_profile
+##Annoyance fixes and other cool stuff I've picked up over the years.
+##(WTFPL) Michael Parks <mparks@tkware.info>
+
+#Enable colors and stop them from polluting
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+#Assorted timesavers
 alias lsr='ls -ltr'
 alias lsf='ls -f'
-alias cls='clear'
-alias grep='grep --color=auto'
-alias apt-get='sudo apt-get'
-alias yum='sudo yum'
+alias cls='clear' #DOS-ism i'll never be able to unlearn
+
 #Squelch that annoying login banner on SSH
 alias ssh='ssh -q'
+
 #Annoying misspelling fixes
 alias grpe='grep'
 alias sl='ls'
+alias gti='git'
 
-#Loop visualization shenanigans- call Process mid-loop to have a spinning cursor
+#"Get out of my way" aliases
+syum(){
+if [ $UID == 0 ]; then
+yum "$@"
+else
+sudo yum "$@"
+fi
+}
+
+sapt(){
+if [ $UID == 0 ]; then
+apt-get "$@"
+else
+sudo apt-get "$@"
+fi
+}
+
+alias yum='syum'
+alias apt-get='sapt'
+
+#Loop visualization, call mid-for/while loop to get a spinning cursor
 Process()
 {
   case $toggle
@@ -48,6 +75,12 @@ Process()
 function etar(){
 tar -cz "$@" | gpg --cipher-algo AES256 --force-mdc -c -o "$@".tgz.gpg
 }
+
+# Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin 
+
+# Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 ##################################################
 # Fancy PWD display function (thanks ArchWiki!)
@@ -128,6 +161,7 @@ PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
 
+#################################################
 # Auto-screen invocation. see: http://taint.org/wk/RemoteLoginAutoScreen
 # if we're coming from a remote SSH connection, in an interactive session
 # then automatically put us into a screen(1) session.   Only try once
@@ -143,7 +177,3 @@ then
   echo "Screen failed! continuing with normal bash startup"
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
