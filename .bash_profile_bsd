@@ -1,0 +1,3 @@
+#Enable colors and stop them from polluting
+echo "This is bsd"
+alias ls='ls -g'

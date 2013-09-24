@@ -1,0 +1,22 @@
+#Enable colors and stop them from polluting
+alias ls='ls --color=auto'
+
+#Assorted timesavers
+syum(){
+if [ $UID == 0 ]; then
+yum "$@"
+else
+sudo yum "$@"
+fi
+}
+
+sapt(){
+if [ $UID == 0 ]; then
+apt-get "$@"
+else
+sudo apt-get "$@"
+fi
+}
+
+alias yum='syum'
+alias apt-get='sapt'

@@ -3,8 +3,14 @@
 ##Annoyance fixes and other cool stuff I've picked up over the years.
 ##(WTFPL) Michael Parks <mparks@tkware.info>
 
+#Grab the appropriate aliases based on our OS
+case $OSTYPE in
+  *linux-gnu* ) source .bash_profile_linux;;
+  *darwin*    ) source .bash_profile_bsd;;
+  *BSD*       ) source .bash_profile_bsd;;
+esac
+
 #Enable colors and stop them from polluting
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 #Assorted timesavers
@@ -19,26 +25,6 @@ alias ssh='ssh -q'
 alias grpe='grep'
 alias sl='ls'
 alias gti='git'
-
-#"Get out of my way" aliases
-syum(){
-if [ $UID == 0 ]; then
-yum "$@"
-else
-sudo yum "$@"
-fi
-}
-
-sapt(){
-if [ $UID == 0 ]; then
-apt-get "$@"
-else
-sudo apt-get "$@"
-fi
-}
-
-alias yum='syum'
-alias apt-get='sapt'
 
 #Loop visualization, call mid-for/while loop to get a spinning cursor
 Process()
