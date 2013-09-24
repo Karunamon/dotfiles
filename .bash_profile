@@ -10,6 +10,9 @@ case $OSTYPE in
   *BSD*       ) source .bash_profile_bsd;;
 esac
 
+#Grab corporate aliases if we have them
+CORPALIAS=~/.work_aliases && test -f $CORPALIAS && source $CORPALIAS
+
 #Enable colors and stop them from polluting
 alias grep='grep --color=auto'
 
