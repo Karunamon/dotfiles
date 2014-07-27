@@ -5,16 +5,13 @@
 
 #Grab the appropriate aliases based on our OS
 case $OSTYPE in
-  *linux-gnu* ) source .bash_profile_linux;;
-  *darwin*    ) source .bash_profile_bsd;;
-  *BSD*       ) source .bash_profile_bsd;;
+  *linux-gnu* ) source .profile_linux;;
+  *darwin*    ) source .profile_bsd;;
+  *BSD*       ) source .profile_bsd;;
 esac
 
 #Grab corporate aliases if we have them
 CORPALIAS=~/.work_aliases && test -f $CORPALIAS && source $CORPALIAS
-
-#Enable colors and stop them from polluting
-alias grep='grep --color=auto'
 
 #Assorted timesavers
 alias lsr='ls -ltr'
@@ -59,17 +56,6 @@ Process()
     ;;
   esac
 }
-
-#Compress and encrypt a file or directory
-function etar(){
-tar -cz "$@" | gpg --cipher-algo AES256 --force-mdc -c -o "$@".tgz.gpg
-}
-
-# Add RVM to PATH for scripting
-PATH=$PATH:$HOME/.rvm/bin 
-
-# Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 ##################################################
 # Fancy PWD display function (thanks ArchWiki!)
@@ -166,3 +152,5 @@ then
   echo "Screen failed! continuing with normal bash startup"
 fi
 
+#RVM Shenanigans
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

@@ -10,16 +10,16 @@ COMPLETION_WAITING_DOTS="true"
 DEFAULT_USER="mparks"
 plugins=( git git-extras rvm osx cp jira )
 source $ZSH/oh-my-zsh.sh
-export PATH=/usr/local/bin:usr/local/heroku/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/local/bin::/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 
 #Grab corporate aliases if we have them
 CORPALIAS=~/.work_aliases && test -f $CORPALIAS && source $CORPALIAS
 
 #Grab the appropriate aliases based on our OS
 case $OSTYPE in
-  *linux-gnu* ) source .bash_profile_linux;;
-  *darwin*    ) source .bash_profile_bsd;;
-  *BSD*       ) source .bash_profile_bsd;;
+  *linux-gnu* ) source .profile_linux;;
+  *darwin*    ) source .profile_bsd;;
+  *BSD*       ) source .profile_bsd;;
 esac
 
 #Enable colors and stop them from polluting
@@ -71,17 +71,8 @@ Process()
   esac
 }
 
-#Compress and encrypt a file or directory
-function etar(){
-tar -cz "$@" | gpg --cipher-algo AES256 --force-mdc -c -o "$@".tgz.gpg
-}
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-### RVM Shenanigans
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#RVM Shenanigans
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-#lol
-fortune | cowsay
+#Deploy humor
+[[ -s fortune ]] && [[ -s cowsay ]] && fortune|cowsay
