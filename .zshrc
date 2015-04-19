@@ -71,8 +71,10 @@ Process()
   esac
 }
 
-#RVM Shenanigans
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 #Deploy humor
 [[ -s fortune ]] && [[ -s cowsay ]] && fortune|cowsay
+
+#Compress and encrypt a file or directory
+function etar(){
+tar -cz "$@" | gpg --cipher-algo AES256 --force-mdc -c -o "$@".tgz.gpg
+}

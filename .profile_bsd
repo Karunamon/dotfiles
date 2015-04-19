@@ -1,3 +1,2 @@
 #Enable colors and stop them from polluting
-echo "Loaded BSD aliases"
 alias ls='ls -G'
