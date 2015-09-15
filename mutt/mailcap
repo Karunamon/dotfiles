@@ -1,0 +1,2 @@
+text/html;              /usr/local/bin/w3m -dump %s; copiousoutput; nametemplate=%s.html
+text/calendar;          mutt-ics; copiousoutput

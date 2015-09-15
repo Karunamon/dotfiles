@@ -13,6 +13,7 @@
   ~/.conkyrc: conkyrc
   ~/.gemrc: gemrc
   ~/.fonts: fonts
+  ~/.mutt: mutt
 
 
 - shell:
