@@ -10,7 +10,11 @@ COMPLETION_WAITING_DOTS="true"
 DEFAULT_USER="mparks"
 plugins=( git git-extras rvm osx cp jira )
 source $ZSH/oh-my-zsh.sh
-export PATH=/usr/local/bin::/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+
+#Default editor
+test -f $(which vim) && export EDTIOR=vim
 
 #Grab corporate aliases if we have them
 CORPALIAS=~/.work_aliases && test -f $CORPALIAS && source $CORPALIAS
