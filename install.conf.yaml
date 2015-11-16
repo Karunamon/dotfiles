@@ -14,7 +14,9 @@
    ~/.gemrc: gemrc
    ~/.fonts: fonts
    ~/.mutt: mutt
+   ~/.atom: atom/
 
 
 - shell:
     - [fonts/install.sh, Installing airline fonts]
+    - [vim -c PluginInstall, Installing vim plugins]
