@@ -7,8 +7,8 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 COMPLETION_WAITING_DOTS="true"
-DEFAULT_USER="mparks"
-plugins=( git git-extras rvm osx cp jira )
+DEFAULT_USER="tk"
+plugins=( git git-extras rbenv )
 source $ZSH/oh-my-zsh.sh
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
