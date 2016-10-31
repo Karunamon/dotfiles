@@ -154,3 +154,6 @@ fi
 
 #RVM Shenanigans
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+#Fix sudo packager annoyances
+source ~/.sudo_package_manager

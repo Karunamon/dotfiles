@@ -7,7 +7,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 COMPLETION_WAITING_DOTS="true"
-DEFAULT_USER="tk"
+DEFAULT_USER="mparks"
 plugins=( git git-extras rbenv )
 source $ZSH/oh-my-zsh.sh
 
@@ -25,6 +25,8 @@ case $OSTYPE in
   *darwin*    ) source .profile_bsd;;
   *BSD*       ) source .profile_bsd;;
 esac
+
+source .sudo_package_manager
 
 #Enable colors and stop them from polluting
 alias grep='grep --color=auto'
