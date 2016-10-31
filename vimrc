@@ -5,10 +5,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 "Vundle Stuff
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'rodjek/vim-puppet'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
@@ -18,7 +19,6 @@ call vundle#end()
 syntax on
 set fo=tcq
 set background=dark
-colorscheme solarized
 
 " Dark blue comments are not very readable on a dark terminal
 highlight comment ctermfg=cyan
