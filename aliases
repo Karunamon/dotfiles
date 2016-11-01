@@ -1,0 +1,19 @@
+#Various aliases for all shells
+
+alias lsr='ls -ltr'
+alias lsf='ls -f'
+alias cls='clear' #DOS-ism i'll never be able to unlearn
+alias t='task'
+
+#Spelling fixes
+alias grpe='grep'
+alias sl='ls'
+alias gti='git'
+
+#Shell-specific stuff
+case $SHELL in
+  *bash* )
+    alias resource='source ~/.bash_profile';;
+  *zsh* )
+    alias resource='source ~/.zshrc';;
+esac

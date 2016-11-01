@@ -5,28 +5,15 @@
 
 #Grab the appropriate aliases based on our OS
 case $OSTYPE in
-  *linux-gnu* ) source .profile_linux;;
-  *darwin*    ) source .profile_bsd;;
-  *BSD*       ) source .profile_bsd;;
+  *linux-gnu* ) test -f .profile_linux && source .profile_linux;;
+  *darwin*    ) test -f .profile_bsd && source .profile_bsd;;
+  *BSD*       ) test -f .profile_bsd && source .profile_bsd;;
 esac
 
 #Grab corporate aliases if we have them
 CORPALIAS=~/.work_aliases && test -f $CORPALIAS && source $CORPALIAS
 
-#Assorted timesavers
-alias lsr='ls -ltr'
-alias lsf='ls -f'
-alias cls='clear' #DOS-ism i'll never be able to unlearn
-
-#Squelch that annoying login banner on SSH
-alias ssh='ssh -q'
-
-#Annoying misspelling fixes
-alias grpe='grep'
-alias sl='ls'
-alias gti='git'
-
-#Loop visualization, call mid-for/while loop to get a spinning cursor
+#Loop visualization, call inside for/while loop to get a spinning cursor
 Process()
 {
   case $toggle
@@ -92,7 +79,7 @@ bash_prompt() {
           ;;
     esac
     local NONE="\[\033[0m\]"    # unsets color to term's fg color
-    
+
     # regular colors
     local K="\[\033[0;30m\]"    # black
     local R="\[\033[0;31m\]"    # red
@@ -102,7 +89,7 @@ bash_prompt() {
     local M="\[\033[0;35m\]"    # magenta
     local C="\[\033[0;36m\]"    # cyan
     local W="\[\033[0;37m\]"    # white
-    
+
     # emphasized (bolded) colors
     local EMK="\[\033[1;30m\]"
     local EMR="\[\033[1;31m\]"
@@ -112,7 +99,7 @@ bash_prompt() {
     local EMM="\[\033[1;35m\]"
     local EMC="\[\033[1;36m\]"
     local EMW="\[\033[1;37m\]"
-    
+
     # background colors
     local BGK="\[\033[40m\]"
     local BGR="\[\033[41m\]"
@@ -122,10 +109,10 @@ bash_prompt() {
     local BGM="\[\033[45m\]"
     local BGC="\[\033[46m\]"
     local BGW="\[\033[47m\]"
-    
+
     local UC=$W                 # user's color
     [ $UID -eq "0" ] && UC=$R   # root's color
-    
+
     PS1="$TITLEBAR${EMK}[${UC}\u${EMK}@${UC}\h ${EMB}\${NEW_PWD}${EMK}]${UC}\\$ ${NONE}"
     # without colors: PS1="[\u@\h \${NEW_PWD}]\\$ "
     # extra backslash in front of \$ to make bash colorize the prompt
@@ -152,8 +139,6 @@ then
   echo "Screen failed! continuing with normal bash startup"
 fi
 
-#RVM Shenanigans
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-#Fix sudo packager annoyances
+#Other goodies
 source ~/.sudo_package_manager
+source ~/.aliases

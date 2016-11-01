@@ -16,6 +16,7 @@
    ~/.mutt: mutt
    ~/.atom: atom/
    ~/.sudo_package_manager: sudo_package_manager
+   ~/.aliases: aliases
 
 
 - shell:

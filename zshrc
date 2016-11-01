@@ -16,37 +16,27 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 #Default editor
 test -f $(which vim) && export EDTIOR=vim
 
-#Grab corporate aliases if we have them
-CORPALIAS=~/.work_aliases && test -f $CORPALIAS && source $CORPALIAS
+#Grab work aliases if we have them
+test -f .work_aliases && source .work_aliases
 
-#Grab the appropriate aliases based on our OS
+#Grab the appropriate specific aliases based on our OS
 case $OSTYPE in
-  *linux-gnu* ) source .profile_linux;;
-  *darwin*    ) source .profile_bsd;;
-  *BSD*       ) source .profile_bsd;;
+  *linux-gnu* ) test -f .profile_linux && source .profile_linux;;
+  *darwin*    ) test -f .profile_bsd && source .profile_bsd;;
+  *BSD*       ) test -f .profile_bsd &&source .profile_bsd;;
 esac
 
+#Load various other stuff here
 source .sudo_package_manager
+source .aliases
 
-#Enable colors and stop them from polluting
+#Colors for grep
 alias grep='grep --color=auto'
-
-#Assorted timesavers
-alias lsr='ls -ltr'
-alias lsf='ls -f'
-alias cls='clear' #DOS-ism i'll never be able to unlearn
-alias t='task'
-alias resource='source ~/.zshrc'
 
 #Squelch that annoying login banner on SSH
 alias ssh='ssh -q'
 
-#Annoying misspelling fixes
-alias grpe='grep'
-alias sl='ls'
-alias gti='git'
-
-#Loop visualization, call mid-for/while loop to get a spinning cursor
+#Loop visualization, call inside for/while loop to get a spinning cursor
 Process()
 {
   case $toggle
