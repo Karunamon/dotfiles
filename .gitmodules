@@ -1,3 +1,9 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "vim/bundle/Vundle.Vim"]
+	path = vim/bundle/Vundle.Vim
+	url = http://github.com/VundleVim/Vundle.Vim
+[submodule "vim/bundle/vim-airline-themes"]
+	path = vim/bundle/vim-airline-themes
+	url = http://github.com/vim-airline/vim-airline-themes
