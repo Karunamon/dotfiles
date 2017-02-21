@@ -22,3 +22,4 @@
 - shell:
     - [fonts/install.sh, Installing airline fonts]
     - [vim -c PluginInstall, Installing vim plugins]
+    - [macstuff.sh, Setting Mac settings if necessary]
