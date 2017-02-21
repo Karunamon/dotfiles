@@ -8,7 +8,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'rodjek/vim-puppet'
 "Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fatih/vim-go'
@@ -26,34 +25,28 @@ highlight comment ctermfg=cyan
 "Make the backspace behavior sane
 set backspace=indent,eol,start
 
-" Soft tabs please
+" Real tabs please, but make them smaller for Python
 set tabstop=2
-set expandtab
 set softtabstop=2
 set shiftwidth=2
+set noexpandtab
 
 " Let's make extra nonsense visible
-
 highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
 match LiteralTabs /\s\  /
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$/
-
-" Set up puppet manifest and spec options
-au BufRead,BufNewFile *.pp
-  \ set filetype=puppet
-au BufRead,BufNewFile *_spec.rb
-  \ nmap <F8> :!rspec --color %<CR>
 
 " Other assorted awesomeness
 set nocompatible laststatus=2 showcmd showmode
 set incsearch ignorecase smartcase hlsearch
 set magic
 set shortmess+=I
-"Reset filetype plugin in case the OS did something silly between startup and
-"here
+
+"Reset filetypes in case the OS did something silly between startup and now
 filetype off
 filetype plugin indent on
+
 " Git gutter colors
 highlight clear SignColumn
 highlight GitGutterChange ctermfg=3 ctermbg=0
