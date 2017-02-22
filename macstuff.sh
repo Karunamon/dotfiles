@@ -48,6 +48,7 @@ fi
 
 brewit '/usr/local/bin/git' 'git'
 brewit '/usr/local/bin/sbcl' 'sbcl'
+brewit '/usr/local/bin/vim' 'vim'
 caskit 'iTerm' 'iterm2'
 caskit 'Atom' 'atom'
 caskit '1Password' '1password'
