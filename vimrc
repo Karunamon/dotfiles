@@ -7,8 +7,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
@@ -53,7 +51,25 @@ highlight GitGutterChange ctermfg=3 ctermbg=0
 highlight GitGutterDelete ctermfg=9 ctermbg=0
 highlight GitGutterAdd ctermfg=2 ctermbg=0
 highlight GitGutterChangeDelete ctermfg=4 ctermbg=0
+
+" Airline settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_enable_syntastic = 1
 let g:airline_theme = 'powerlineish'
+
+" NERDTree settings per github.com/scrooloose/nerdtree/issues/489
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeGlyphReadOnly = "RO"
+
+" Syntastic settings
+ set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
