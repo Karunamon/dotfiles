@@ -1,11 +1,16 @@
 #Various aliases for all shells
-
 alias lsr='ls -ltr'
 alias lsf='ls -f'
 alias cls='clear' #DOS-ism i'll never be able to unlearn
 alias t='task'
 
-#Spelling fixes
+#Colors for grep
+alias grep='grep --color=auto'
+
+#Squelch that annoying login banner on SSH
+alias ssh='ssh -q'
+
+#Spelling fixes (which are always tranposing the last two letters for some reason..)
 alias grpe='grep'
 alias sl='ls'
 alias gti='git'
@@ -17,3 +22,9 @@ case $SHELL in
   *zsh* )
     alias resource='source ~/.zshrc';;
 esac
+
+#Compress and encrypt a file or directory
+function etar(){
+tar -czv "$@" | gpg --cipher-algo AES256 --force-mdc -c -o "$@".tgz.gpg
+}
+
