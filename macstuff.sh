@@ -21,7 +21,7 @@ function caskit(){
 
 case $OSTYPE in
   darwin* ) echo "This is a mac! Doing mac things now..";;
-  * ) echo "Not a mac - moving on." ; exit 0 ;;
+  * ) echo "This is not a mac - moving on." ; exit 0 ;;
 esac
 
 echo "Setting mac defaults"
@@ -49,8 +49,15 @@ fi
 brewit '/usr/local/bin/git' 'git'
 brewit '/usr/local/bin/sbcl' 'sbcl'
 brewit '/usr/local/bin/vim' 'vim'
+brewit '/usr/local/Cellar/pyenv/*' 'pyenv'
 caskit 'iTerm' 'iterm2'
 caskit 'Atom' 'atom'
-caskit '1Password' '1password'
 caskit 'Dropbox' 'dropbox'
 caskit 'AppCleaner' 'appcleaner'
+caskit 'QbServe'  'qbserve'
+caskit 'NetNewsWire' 'netnewswire'
+caskit 'Keybase' 'keybase'
+
+#We installed a new vim, which makes git unhappy - point at the new one
+hash -r
+git config --global core.editor $(which vim)
