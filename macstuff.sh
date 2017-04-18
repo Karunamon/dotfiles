@@ -14,7 +14,7 @@ function caskit(){
   echo -n "Checking for $1.. "
   ls /Applications | grep $1
   if [ $? != 0 ]; then
-    echo "Not installed, brewing $2"
+    echo "not installed, brewing $2"
     brew cask install $2
   fi
 }
@@ -49,7 +49,8 @@ fi
 brewit '/usr/local/bin/git' 'git'
 brewit '/usr/local/bin/sbcl' 'sbcl'
 brewit '/usr/local/bin/vim' 'vim'
-brewit '/usr/local/Cellar/pyenv/*' 'pyenv'
+brewit '/usr/local/Cellar/pyenv' 'pyenv'
+brewit '/usr/local/Cellar/rbenv' 'rbenv'
 caskit 'iTerm' 'iterm2'
 caskit 'Atom' 'atom'
 caskit 'Dropbox' 'dropbox'
