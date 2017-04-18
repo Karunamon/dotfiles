@@ -1,6 +1,7 @@
 .bash_profles_work
 .netrwhist
 .DS_Store
+*.swp
 mutt/temp
 mutt/aliases
 mutt/cache
