@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="flazz"
 COMPLETION_WAITING_DOTS="true"
 DEFAULT_USER="mparks"
-plugins=( git git-extras rbenv pyenv )
+plugins=( git git-extras )
 source $ZSH/oh-my-zsh.sh
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
@@ -66,3 +66,8 @@ Process()
 
 #Make ZSH globbing behave like bash globbing
 setopt nonomatch
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+eval "$(rbenv init -)"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
