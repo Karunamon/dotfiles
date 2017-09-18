@@ -8,18 +8,37 @@
    ~/.scripts: scripts
    ~/.htoprc: htoprc
    ~/.zshrc: zshrc
-   ~/.bashrc: bashrc
    ~/.bash_profile: bash_profile
    ~/.conkyrc: conkyrc
    ~/.gemrc: gemrc
    ~/.fonts: fonts
    ~/.mutt: mutt
-   ~/.atom: atom/
    ~/.sudo_package_manager: sudo_package_manager
    ~/.aliases: aliases
 
+- brew:
+  - git
+  - sbcl
+  - leiningen
+  - vim
+  - pyenv
+  - rbenv
+  - zsh
+
+- cask:
+  - iterm2
+  - dropbox
+  - appcleaner
+  - qbserve
+  - netnewswire
+  - keybase
+  - spotify
 
 - shell:
     - [fonts/install.sh, Installing airline fonts]
-    - [vim -c PluginInstall, Installing vim plugins]
-    - [macstuff.sh, Setting Mac settings if necessary]
+    - [vim +PluginInstall +qall, Installing vim plugins]
+    - [bash -x macstuff.sh, Setting Mac settings if necessary (sudo required)]
+    - ["git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh", Installing oh-my-zsh]
+    - [git config --global core.editor $(which vim), Reconfiguring git to use any new vim installation]
+    - [git config --global user.name "Michael Parks", Setting git username]
+    - [git config --global user.email "mparks@tkware.info", Setting git user email]
