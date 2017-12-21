@@ -8,9 +8,11 @@ DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-cd "${BASEDIR}"
-git submodule update --init --recursive "${DOTBOT_DIR}"
-# Need this for vim plugins
-git submodule update --recursive $BASEDIR
+echo "Standing up dotbot-brew..."
+cd $BASEDIR && git submodule update --init dotbot-brew/
+echo "Standing up Vundle..."
+cd $BASEDIR && git submodule update --init vim/bundle/Vundle.vim
+
+echo "Handing off to dotbot!"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-brew -c "${CONFIG}" "${@}"

@@ -37,7 +37,7 @@
 - shell:
     - [fonts/install.sh, Installing airline fonts]
     - [vim +PluginInstall +qall, Installing vim plugins]
-    - [bash -x macstuff.sh, Setting Mac settings if necessary (sudo required)]
+    - [bash -x mac_system_settings.sh, Setting Mac settings if necessary (sudo required)]
     - ["git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh", Installing oh-my-zsh]
     - [git config --global core.editor $(which vim), Reconfiguring git to use any new vim installation]
     - [git config --global user.name "Michael Parks", Setting git username]

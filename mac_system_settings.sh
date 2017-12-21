@@ -2,6 +2,14 @@
 
 #mac_system_settings.sh - adapted from https://mths.be/macos
 
+#Make sure this is a mac and bail out if not
+
+case $OSTYPE in
+  darwin* ) echo "This is a mac! Doing mac things now..";;
+  * ) echo "This is not a mac - moving on." ; exit 0 ;;
+esac
+
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
