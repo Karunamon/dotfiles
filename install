@@ -8,8 +8,10 @@ DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+echo "Standing up dotbot..."
+cd $BASEDIR && git submodule update --init --recursive dotbot/
 echo "Standing up dotbot-brew..."
-cd $BASEDIR && git submodule update --init dotbot-brew/
+cd $BASEDIR && git submodule update --init --recursive dotbot-brew/
 echo "Standing up Vundle..."
 cd $BASEDIR && git submodule update --init vim/bundle/Vundle.vim
 
