@@ -35,6 +35,7 @@
   - spotify
 
 - shell:
+    - [./linux_packages.sh, Installing Linux packages if necessary]
     - [fonts/install.sh, Installing airline fonts]
     - [vim +PluginInstall +qall, Installing vim plugins]
     - [bash -x mac_system_settings.sh, Setting Mac settings if necessary (sudo required)]

@@ -11,7 +11,11 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "Standing up dotbot..."
 cd $BASEDIR && git submodule update --init --recursive dotbot/
 echo "Standing up dotbot-brew..."
-cd $BASEDIR && git submodule update --init --recursive dotbot-brew/
+case $OSTYPE in
+ darwin* ) cd $BASEDIR && git submodule update --init --recursive dotbot-brew/ ;;
+ * ) echo "Nevermind, this isn't a mac";;
+esac
+
 echo "Standing up Vundle..."
 cd $BASEDIR && git submodule update --init vim/bundle/Vundle.vim
 
