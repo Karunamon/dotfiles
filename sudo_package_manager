@@ -3,6 +3,10 @@
 
 #Shell rules require these to be functions
 sudo_apt(){
+  sudo apt "$@"
+}
+
+sudo_apt_get(){
   sudo apt-get "$@"
 }
 
@@ -18,7 +22,8 @@ sudo_emerge(){
   sudo emerge "$@"
 }
 
-alias apt-get=sudo_apt
+alias apt-get=sudo_apt_get
+alias apt=sudo_apt
 alias yum=sudo_yum
 alias dnf=sudo_dnf
 alias emerge=sudo_emerge
