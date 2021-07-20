@@ -15,9 +15,10 @@
    ~/.mutt: mutt
    ~/.sudo_package_manager: sudo_package_manager
    ~/.aliases: aliases
+   ~/.p10k.zsh: p10k.zsh
+   ~/powerlevel10k: powerlevel10k/
 
 - brew:
-  - git
   - sbcl
   - leiningen
   - vim
@@ -39,7 +40,7 @@
     - [fonts/install.sh, Installing airline fonts]
     - [vim +PluginInstall +qall, Installing vim plugins]
     - [bash -x mac_system_settings.sh, Setting Mac settings if necessary (sudo required)]
-    - ["git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh", Installing oh-my-zsh]
+
     - [git config --global core.editor $(which vim), Reconfiguring git to use any new vim installation]
     - [git config --global user.name "Michael Parks", Setting git username]
     - [git config --global user.email "mparks@tkware.info", Setting git user email]

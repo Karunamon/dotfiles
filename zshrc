@@ -3,14 +3,20 @@
 #Assorted aliases and things
 #WTFPL Michael Parks <mparks@tkware.info>
 
-##oh-my-zsh things
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="flazz"
-COMPLETION_WAITING_DOTS="true"
-DEFAULT_USER="mparks"
-plugins=( git git-extras )
-source $ZSH/oh-my-zsh.sh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt beep
+unsetopt autocd extendedglob
+bindkey -e
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 
 #Default editor
@@ -61,13 +67,22 @@ Process()
   esac
 }
 
+#Function checking for later
+fn_exists() { declare -F "$1" > /dev/null; }
+
 #Deploy humor
 [[ -s fortune ]] && [[ -s cowsay ]] && fortune|cowsay
 
 #Make ZSH globbing behave like bash globbing
 setopt nonomatch
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-eval "$(rbenv init -)"
+
+fn_exists pyenv && eval "$(pyenv init -)"
+fn_exists pyenv && eval "$(pyenv virtualenv-init -)"
+fn_exists rbenv && eval "$(rbenv init -)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+#P10K config
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
